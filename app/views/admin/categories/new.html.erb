@@ -1,0 +1,12 @@
+<h1>Create </h1>
+
+<%= form_for :category, url: admin_categories_path do |form| %>
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
