@@ -1,0 +1,24 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hello!</h1>
+    <p>Here are your order details:</p>
+    <p>
+      Email: <%= @order.email %><br>
+      Total: <%= humanized_money_with_symbol @order.total_cents %><br>
+    </p>
+
+    <p>Order items:</p>
+    <ul>
+    <% @order.line_items.each do |item| %>
+      <li><%= item %></li>
+    <% end %>
+    </ul>
+
+    <p>Have a great day :)</p>
+  </body>
+</html>
