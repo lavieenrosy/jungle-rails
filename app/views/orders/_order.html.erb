@@ -1,0 +1,12 @@
+  <% @order.line_items.each do |item| %>
+    <% product = @product.find_by_id(item.product_id) %>
+
+  <tr>
+    <td><%= product.name %></td>
+    <td><%= product.description %></td>
+    <td><%= image_tag product.image.thumb, alt: product.name %></td>
+    <td><%= item.quantity %></td>
+    <td><%= humanized_money_with_symbol product.price_cents %></td>
+  </tr>
+
+ <% end %>
