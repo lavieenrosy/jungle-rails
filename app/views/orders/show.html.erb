@@ -23,6 +23,26 @@
       </tbody>
     </table>
 
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Email</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= @order.email %></td>
+          <td><%= humanized_money_with_symbol @order.total_cents %></td>
+        </tr>
+      </tbody>
+    </table>
+
+
+
+
+
+
   </div>
 
   <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>

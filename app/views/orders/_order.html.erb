@@ -1,4 +1,6 @@
+
   <% @order.line_items.each do |item| %>
+
     <% product = @product.find_by_id(item.product_id) %>
 
   <tr>
@@ -10,3 +12,4 @@
   </tr>
 
  <% end %>
+
