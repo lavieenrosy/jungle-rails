@@ -26,12 +26,12 @@
       </div>
 
       <div class="col-sm-8">
-        <%= form_for @product, method: "POST", url: "#{@product.id}/reviews" do |form| %>
-          <%= form.fields_for :reviews do |review| %>
-            Description: <%= review.text_area :description %><br>
-            Rating: <%= review.select :rating, [1, 2, 3, 4, 5] %><br>
-            <%= review.submit "Leave Review" %>
-          <% end %>
+        <%= form_for [@product, @review], method: "POST" do |form| %>
+          <%= form.label :description %><br>
+          <%= form.text_area :description %><br>
+          <%= form.label :rating %><br>
+          <%= form.select :rating, [1, 2, 3, 4, 5] %><br>
+          <%= form.submit "Leave Review" %>
         <% end %>
       </div>
 
@@ -40,10 +40,10 @@
           <dt>Ratings: </dt>
           <% @product.reviews.each do |review| %>
             <dd>
-            <% (1...review.rating + 1).each do %>
+            <% (0...review.rating).each do %>
               <span class="fa fa-star checked"></span>
             <% end %>
-            <% (1...(6 - review.rating)).each do %>
+            <% (review.rating...5).each do %>
               <span class="fa fa-star"></span>
             <% end %>
             </dd>
