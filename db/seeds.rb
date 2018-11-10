@@ -132,5 +132,31 @@ cat3.products.create!({
   price: 2_483.75
 })
 
+##
+
+User.create({
+  first_name: 'Mo',
+  last_name: 'Shmo',
+  email: 'mo@mo.mo',
+  password_digest: '1234'
+})
+
+Product.find_by(id:1).reviews.create({
+  user_id: 1,
+  description: 'Flashy, but has squeaky parts',
+  rating: 2
+})
+
+Product.find_by(id:1).reviews.create({
+  user_id: 1,
+  description: 'Meh... could do without.',
+  rating: 3
+})
+
+Product.find_by(id:2).reviews.create({
+  user_id: 1,
+  description: 'Would buy again! In fact, maybe I will...',
+  rating: 5
+})
 
 puts "DONE!"

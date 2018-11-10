@@ -24,6 +24,44 @@
           <dd><%= @product.price %></dd>
         </dl>
       </div>
+
+      <% if current_user %>
+
+      <div class="col-sm-8">
+        <dl class="dl-horizontal">
+          <dt>Write Review</dt>
+          <dd>
+            <%= form_for [@product, @review], method: "POST" do |form| %>
+              <%= form.label :description %><br>
+              <%= form.text_area :description %><br>
+              <%= form.label :rating %><br>
+              <%= form.select :rating, [1, 2, 3, 4, 5] %><br><br>
+              <%= form.submit "Review" %>
+            <% end %>
+          </dd>
+        </dl>
+      </div>
+
+      <% end %>
+
+      <div class="col-sm-8">
+        <dl class="dl-horizontal">
+          <dt>Ratings: </dt>
+          <% @product.reviews.reverse.each do |review| %>
+            <dd>
+            <% (0...review.rating).each do %>
+              <span class="fa fa-star checked"></span>
+            <% end %>
+            <% (review.rating...5).each do %>
+              <span class="fa fa-star"></span>
+            <% end %>
+            </dd>
+          <dd><strong><%= review.rating %>/5:</strong> <%= review.description %></dd>
+          <dd><%= link_to 'Delete Review', [review.product, review], method: :delete, data: { confirm: 'Are you sure?' } %></dd>
+          <% end %>
+        </dl>
+      </div>
+
     </div>
 
   </article>
