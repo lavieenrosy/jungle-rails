@@ -138,7 +138,14 @@ User.create({
   first_name: 'Mo',
   last_name: 'Shmo',
   email: 'mo@mo.mo',
-  password_digest: '1234'
+  password_digest: '123456'
+})
+
+User.create({
+  first_name: 'Po',
+  last_name: 'Shmoz',
+  email: 'po@po.po',
+  password_digest: '123456'
 })
 
 Product.find_by(id:1).reviews.create({
